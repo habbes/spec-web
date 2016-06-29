@@ -93,3 +93,6 @@ include/
 
 # IDEs
 .c9/
+
+# Sqlite
+db.sqlite3
