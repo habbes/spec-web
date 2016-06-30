@@ -103,9 +103,17 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Social Authentication
+
 AUTHENTICATION_BACKENDS = [
     'social.backends.github.GithubOAuth2'    
 ]
+
+# Github Auth
+
+SOCIAL_AUTH_GITHUB_KEY = os.environ['GITHUB_CLIENT_ID']
+SOCIAL_AUTH_GITHUB_SECRET = os.environ['GITHUB_CLIENT_SECRET']
+
 
 
 # Internationalization
