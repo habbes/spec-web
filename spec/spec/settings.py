@@ -115,7 +115,7 @@ AUTHENTICATION_BACKENDS = [
 
 SOCIAL_AUTH_GITHUB_KEY = os.environ['GITHUB_CLIENT_ID']
 SOCIAL_AUTH_GITHUB_SECRET = os.environ['GITHUB_CLIENT_SECRET']
-
+SOCIAL_AUTH_GITHUB_SCOPE = ['user', 'repo']
 # User Model to link to social auth
 
 SOCIAL_AUTH_USER_MODEL = 'auth.User'
