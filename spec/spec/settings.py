@@ -66,6 +66,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social.apps.django_app.context_processors.backends',
+                'social.apps.django_app.context_processors.login_redirect',
             ],
         },
     },
@@ -113,11 +115,13 @@ AUTHENTICATION_BACKENDS = [
 
 SOCIAL_AUTH_GITHUB_KEY = os.environ['GITHUB_CLIENT_ID']
 SOCIAL_AUTH_GITHUB_SECRET = os.environ['GITHUB_CLIENT_SECRET']
-SOCIAL_AUTH_GITHUB_LOGIN_REDIRECT_URL = '/auth/github/callback'
 
 # User Model to link to social auth
 
 SOCIAL_AUTH_USER_MODEL = 'auth.User'
+
+# Login Redirect
+LOGIN_REDIRECT_URL = '/'
 
 
 
