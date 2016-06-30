@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social.apps.django_app.default'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -65,6 +66,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social.apps.django_app.context_processors.backends',
+                'social.apps.django_app.context_processors.login_redirect',
             ],
         },
     },
@@ -101,6 +104,25 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# Social Authentication
+
+AUTHENTICATION_BACKENDS = [
+    'social.backends.github.GithubOAuth2'    
+]
+
+# Github Auth
+
+SOCIAL_AUTH_GITHUB_KEY = os.environ['GITHUB_CLIENT_ID']
+SOCIAL_AUTH_GITHUB_SECRET = os.environ['GITHUB_CLIENT_SECRET']
+SOCIAL_AUTH_GITHUB_SCOPE = ['user', 'repo']
+# User Model to link to social auth
+
+SOCIAL_AUTH_USER_MODEL = 'auth.User'
+
+# Login Redirect
+LOGIN_REDIRECT_URL = '/'
+
 
 
 # Internationalization
