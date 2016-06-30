@@ -84,6 +84,7 @@ ENV/
 bin/
 lib/
 include/
+Scripts/
 
 # Spyder project settings
 .spyderproject
@@ -94,5 +95,7 @@ include/
 # IDEs
 .c9/
 *.~c9*
+.idea
+
 # Sqlite
 db.sqlite3
