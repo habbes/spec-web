@@ -117,7 +117,7 @@ SOCIAL_AUTH_GITHUB_LOGIN_REDIRECT_URL = '/auth/github/callback'
 
 # User Model to link to social auth
 
-SOCIAL_AUTH_USER_MODEL = 'django.contrib.auth.User'
+SOCIAL_AUTH_USER_MODEL = 'auth.User'
 
 
 
