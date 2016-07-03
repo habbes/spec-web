@@ -50,5 +50,12 @@ a.btn {
 }
 
 .profile-main-content {
-    border-left: 1px solid #d7dbe0;
+    border-left: 1px solid #ecf0f1;
+}
+
+.profile-sub-content {
+    padding-top:20px;
+    padding-left:7px;
+    padding-right:7px;
+    text-align:justify;
 }
