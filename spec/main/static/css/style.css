@@ -2,13 +2,36 @@
 
 body {
     font-family: 'Source Sans Pro', sans-serif;
-    font-size: 14px;
+    font-size: 15px;
+    background-color: #fbfbfb;
+    color: #7C838A;
 }
 
 .navbar {
     border-radius:0px;
+    background: rgba(255,255,255,0.7)
 }
 
 .logo {
     font-weight: lighter;
+}
+
+.logo,
+a, a:hover, a:visited, a:focus,
+.navbar-default .navbar-brand,
+.navbar-default .navbar-brand:focus,
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-nav>li>a,
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:focus{
+    color: #18bc9c;
+}
+
+a:hover {
+    text-decoration: none;
+    font-weight:normal;
+}
+
+a.btn {
+    color: #fff;
 }
