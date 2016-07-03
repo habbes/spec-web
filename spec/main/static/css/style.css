@@ -7,6 +7,12 @@ body {
     color: #7C838A;
 }
 
+h1,h2,h4,h5,h6,
+.h1,.h2,.h3,.h4,.h5,.h6 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300;
+}
+
 .navbar {
     border-radius:0px;
     background: rgba(255,255,255,0.7);
@@ -41,4 +47,8 @@ a:hover {
 
 a.btn {
     color: #fff;
+}
+
+.profile-main-content {
+    border-left: 1px solid #d7dbe0;
 }

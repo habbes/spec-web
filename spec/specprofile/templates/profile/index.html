@@ -1,1 +1,27 @@
-Hello {{ user.username }}
+{% extends 'main/layout/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-body">
+
+                <div class="col-md-4">
+                    <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+                </div>
+                <div class="col-md-8 profile-main-content">
+                    <div class="nav nav-tabs">
+                        <li class="active"><a href="#">Overview</a></li>
+                        <li><a href="#">Projects</a></li>
+                        <li><a href="#">Skills</a></li>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
