@@ -123,6 +123,19 @@ SOCIAL_AUTH_USER_MODEL = 'auth.User'
 # Login Redirect
 LOGIN_REDIRECT_URL = '/'
 
+# Social Auth Pipeline
+SOCIAL_AUTH_PIPELINE = (
+    'social.pipeline.social_auth.social_details',
+    'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.auth_allowed',
+    'social.pipeline.social_auth.social_user',
+    'social.pipeline.user.get_username',
+    'social.pipeline.user.create_user',
+    'social.pipeline.social_auth.associate_user',
+    'social.pipeline.social_auth.load_extra_data',
+    'social.pipeline.user.user_details',
+    'specauth.pipeline.queue_init_profile'
+)
 
 
 # Internationalization
