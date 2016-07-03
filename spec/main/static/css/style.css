@@ -18,7 +18,9 @@ body {
 }
 
 .navbar-brand {
-    font-size: 1.6em;
+    font-size: 2em;
+    position:relative;
+    top:-5px;
 }
 
 .logo,
