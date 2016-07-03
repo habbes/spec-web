@@ -1,10 +1,8 @@
 import os
 import pika
+import json
 
-connection = pika.BlockingConnection(pika.URLParameters(
-        os.environ['CLOUDAMQP_URL']))
 
-channel = connection.channel()
 
 
 def queue_job(queue, name, data):
@@ -15,11 +13,17 @@ def queue_job(queue, name, data):
     :param data: dict containing job payload
     :return:
     """
+    connection = pika.BlockingConnection(pika.URLParameters(
+        os.environ['CLOUDAMQP_URL']))
+
+    channel = connection.channel()
     print('Sending job', name, 'to queue', queue)
     message = {
         'name': name,
         'data': data
     }
+    message = json.dumps(message)
+    print('message', message)
     channel.queue_declare(queue=queue, durable=True)
     channel.basic_publish(
         exchange='',

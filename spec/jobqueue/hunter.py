@@ -1,6 +1,6 @@
-from spec.queue.setup import queue_job
+from .setup import queue_job
 
-QUEUE = 'hunter'
+QUEUE = 'hunter_queue'
 
 INIT_USER_PROFILE = 'initUserProfile'
 

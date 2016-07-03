@@ -1,7 +1,8 @@
 """
 Functions to plug into the social auth pipeline
 """
-from spec.queue import hunter
+from jobqueue import hunter
+
 
 def queue_init_profile(backend, user, response, social, *args, **kwargs):
     """
@@ -23,4 +24,4 @@ def queue_init_profile(backend, user, response, social, *args, **kwargs):
     print('data', data)
     print('args', kwargs)
     hunter.init_user_profile(provider, uid, token)
-
+    print('Done')
