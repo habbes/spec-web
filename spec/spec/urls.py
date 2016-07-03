@@ -20,5 +20,6 @@ urlpatterns = [
     url(r'^auth/', include('specauth.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'', include('main.urls')),
-    url('', include('social.apps.django_app.urls', namespace='social'))
+    url('', include('social.apps.django_app.urls', namespace='social')),
+    url(r'^(?P<username>)/', include('specprofile.urls', namespace='profile')),
 ]
