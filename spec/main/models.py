@@ -4,10 +4,15 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
+class Skill(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.TextField(default='')
+
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     skills = models.ManyToManyField(Skill)
-    
+
 
 class Project(models.Model):
     name = models.CharField(max_length=255)
@@ -20,9 +25,3 @@ class Project(models.Model):
 
     def __str__(self):
         return '%s: %s' % (self.provider, self.name)
-
-
-class Skill(models.Model):
-    name = models.CharField(max_length=255)
-    description = models.TextField(default='')
-
