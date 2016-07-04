@@ -17,13 +17,3 @@ class IndexView(ListView):
             ctx['profile'] = user.profile
         return ctx
 
-
-def index_view(request):
-    user = request.user
-    skills = Skill.objects.all()
-    ctx = {
-        'user': user,
-        'skills': skills
-    }
-    if user: ctx['profile'] = user.profile
-    return render(request, 'skills/index.html', ctx)
