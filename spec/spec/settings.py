@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'main',
     'specauth',
     'specprofile',
+    'specskills',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

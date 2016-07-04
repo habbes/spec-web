@@ -18,6 +18,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^auth/', include('specauth.urls')),
+    url(r'^skills/', include('specskills.urls', namespace='skills')),
     url(r'^admin/', admin.site.urls),
     url(r'', include('main.urls')),
     url('', include('social.apps.django_app.urls', namespace='social')),
