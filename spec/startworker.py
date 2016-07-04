@@ -5,13 +5,13 @@ import pika
 import os
 import json
 import dotenv
-dotenv.read_dotenv(os.path.join('..', '.env'))
+dotenv.read_dotenv()
 from django.conf import settings
-import spec.spec
-import spec.spec.settings
-settings.configure(spec.spec.settings)
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'spec.settings')
+from django.apps import apps
+apps.populate(settings.INSTALLED_APPS)
 
-import handlers
+from worker import handlers
 
 QUEUE = 'appserver_queue'
 
@@ -42,8 +42,15 @@ def callback(channel, method, properties, body):
     print('Job Name', name)
     print('Job Data', data)
     handler = get_handler(name)
-    if handler: handler(data)
-    channel.basic_ack(delivery_tag=method.delivery_tag)
+    if handler:
+        print('Handler found, exectuing handler...')
+        try:
+            handler(data)
+            print('Job complete')
+            channel.basic_ack(delivery_tag=method.delivery_tag)
+        except Exception as e:
+            print('Job failed on error', e)
+
 
 
 if __name__ == '__main__':

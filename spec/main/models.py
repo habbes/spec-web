@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 
 class Skill(models.Model):
     name = models.CharField(max_length=255)
-    description = models.TextField(default='')
+    description = models.TextField(default='', null=True)
 
 
 class Profile(models.Model):
@@ -16,11 +16,12 @@ class Profile(models.Model):
 
 class Project(models.Model):
     name = models.CharField(max_length=255)
-    homepage = models.CharField(max_length=255, default='')
-    url = models.CharField(max_length=255, default='')
-    description = models.TextField(default='')
+    homepage = models.CharField(max_length=255, default='', null=True)
+    url = models.CharField(max_length=255, default='', null=True)
+    description = models.TextField(default='', null=True)
     provider = models.CharField(max_length=255)
     external_id = models.CharField(max_length=255)
+    language = models.CharField(max_length=255, default='', null=True)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
 
     def __str__(self):
