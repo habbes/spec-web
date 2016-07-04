@@ -13,7 +13,7 @@
                         <div class="profile-list">
                             {% for p in skill_profiles %}
                             <div clas="profile-list-item">
-                                <h4><a href="{% url 'profile:home' p.user.username %}">{{ p.user.username }}</a></h4>
+                                <h4><a href="{% url 'profile:projects' p.user.username %}">{{ p.user.username }}</a></h4>
                             </div>
                             <hr>
                             {% endfor %}

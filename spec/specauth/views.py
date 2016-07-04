@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
+from django.contrib.auth import logout
 
 # Create your views here.
 
@@ -14,3 +15,8 @@ class AuthView(TemplateView):
             ctx['user'] = user
             ctx['profile'] = user.profile
         return ctx
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('/')
