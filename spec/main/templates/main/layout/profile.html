@@ -19,9 +19,12 @@
                 </div>
                 <div class="col-md-8 profile-main-content">
                     <div class="nav nav-tabs">
-                        <li class="active"><a href="#">Overview</a></li>
-                        <li><a href="#">Projects</a></li>
-                        <li><a href="#">Skills</a></li>
+                        <li class="{% block overview_tab_active %}{% endblock %}">
+                            <a href="{% url 'profile:home' user.username %}">Overview</a></li>
+                        <li class="{% block projects_tab_active %}{% endblock %}">
+                            <a href="{% url 'profile:projects' user.username %}">Projects</a></li>
+                        <li class="{% block skills_tab_active %}{% endblock %}">
+                            <a href="#">Skills</a></li>
                     </div>
                     <div class="profile-sub-content">
                         {% block profile_content %}{% endblock %}

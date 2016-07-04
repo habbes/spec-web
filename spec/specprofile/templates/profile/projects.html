@@ -1,0 +1,42 @@
+{% extends 'main/layout/profile.html' %}
+
+{% block projects_tab_active %}active{% endblock %}
+
+{% block profile_content %}
+
+{% if projects|length > 0 %}
+    <div class="project-list">
+    {% for project in projects %}
+    <div class="project-list-item">
+        <h3>{{ project.name }}</h3>
+        {% if project.description %}
+        <p>{{ project.description }}</p>
+        {% else %}
+        <p><em>No description available.</em></p>
+        {% endif %}
+        <div class="project-skills">
+            {% if project.language %}
+            Language: {{ project.language }}
+            {% endif %}
+        </div>
+        <div class="project-links">
+            {% if project.homepage %}
+            <a href="{{ project.homepage}}" target="_blank" title="Project Homepage">
+                <i class="fa fa-link"></i></a>
+            {% endif %}
+            {% if project.url %}
+            <a href="{{ project.url }}" target="_blank" title="Project URL">
+                <i class="fa fa-{{ project.provider }}"></i></a>
+            {% endif %}
+        </div>
+    </div>
+    <hr>
+    {% endfor %}
+    </div>
+
+{% else %}
+    <p>No projects found</p>
+{% endif %}
+
+
+{% endblock %}
