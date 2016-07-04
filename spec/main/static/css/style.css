@@ -59,3 +59,9 @@ a.btn {
     padding-right:7px;
     text-align:justify;
 }
+
+.project-list .project-links a {
+    display: inline-block;
+    font-size: 1.3em;
+    margin-right:2px;
+}

@@ -1,0 +1,21 @@
+{% extends 'main/layout/profile.html' %}
+
+{% block skills_tab_active %}active{% endblock %}
+
+{% block profile_content %}
+
+{% if skills|length > 0 %}
+    <div class="skill-list">
+        {% for skill in skills %}
+        <div class="skill-list-item list-group-item">
+            <h4>{{ skill.name }}</h4>
+        </div>
+        {% endfor %}
+    </div>
+
+{% else %}
+<p><em>No skills found.</em></p>
+{% endif %}
+
+
+{% endblock %}
