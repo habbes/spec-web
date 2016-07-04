@@ -35,9 +35,6 @@ def queue_init_profile(backend, user, response, social, new_association, *args, 
     :return:
     """
     print('Auth Pipeline: Init Profile')
-    if not new_association:
-        print('Not new association, skip...')
-        return
     provider = backend.name
     data = social.extra_data
     token, uid = data['access_token'], data['id']
