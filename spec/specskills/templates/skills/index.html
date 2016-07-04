@@ -13,7 +13,7 @@
                     <div class="skill-list">
                         {% for skill in skills %}
                         <div class="skill-list-item">
-                            <h4><a href="">{{ skill.name }}</a></h4>
+                            <h4><a href="{% url 'skills:detail' skill.id %}">{{ skill.name }}</a></h4>
                         </div>
                         <hr>
                         {% endfor %}
