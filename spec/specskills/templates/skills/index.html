@@ -1,0 +1,31 @@
+{% extends 'main/layout/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="col-md-12">
+                    <h2>Browse Skills</h2>
+                    {% if skills|length > 0 %}
+                    <div class="skill-list">
+                        {% for skill in skills %}
+                        <div class="skill-list-item">
+                            <h4><a href="{% url 'skills:detail' skill.id %}">{{ skill.name }}</a></h4>
+                        </div>
+                        <hr>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <p><em>No skills found.</em></p>
+                    {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
