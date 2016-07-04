@@ -24,7 +24,7 @@
                         <li class="{% block projects_tab_active %}{% endblock %}">
                             <a href="{% url 'profile:projects' user.username %}">Projects</a></li>
                         <li class="{% block skills_tab_active %}{% endblock %}">
-                            <a href="#">Skills</a></li>
+                            <a href="{% url 'profile:skills' user.username %}">Skills</a></li>
                     </div>
                     <div class="profile-sub-content">
                         {% block profile_content %}{% endblock %}

@@ -19,3 +19,14 @@ def projects_view(request, username):
         'projects': profile.project_set.all()
     }
     return render(request, 'profile/projects.html', ctx)
+
+
+def skills_view(request, username):
+    user = get_object_or_404(User, username=username)
+    profile = user.profile
+    ctx = {
+        'user': user,
+        'profile': profile,
+        'skills': profile.skills.all()
+    }
+    return render(request, 'profile/skills.html', ctx)
