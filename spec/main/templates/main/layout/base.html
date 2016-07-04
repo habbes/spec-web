@@ -14,8 +14,9 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="{% url 'skills:home' %}">Browse Skills</a></li>
                 {% if user and user.is_authenticated %}
-                <li><a href="{% url 'profile:home' user.username %}">
+                <li><a href="{% url 'profile:projects' user.username %}">
                     <i class="fa fa-user"></i> {{ user.username }}</a></li>
+                <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Logout</a></li>
                 {% else %}
                 <li><a href="{% url 'auth' %}">
                     <i class="fa fa-login"></i> Sign In</a></li>
