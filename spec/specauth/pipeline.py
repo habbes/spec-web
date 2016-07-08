@@ -19,7 +19,7 @@ def create_profile(backend, user, *args, **kwargs):
     if not is_new:
         print('Not new user, skip...')
         return
-    profile = Profile.create(user=user)
+    profile = Profile.objects.create(user=user)
     return {'profile': profile}
 
 def queue_init_profile(backend, user, response, social, new_association, *args, **kwargs):
