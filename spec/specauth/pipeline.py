@@ -55,11 +55,10 @@ def queue_init_profile(backend, user, response, social, new_association, *args, 
     provider = backend.name
     data = social.extra_data
     token, uid = data['access_token'], data['id']
-    if provider == 'github':
-        init_github_profile(token, user.profile)
     print('provider', provider)
     print('social', social)
     print('data', data)
     print('args', kwargs)
-    hunter.init_user_profile(provider, uid, token)
+    if provider == 'github':
+        init_github_profile(token, user.profile)
     print('Done')
