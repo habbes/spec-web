@@ -12,7 +12,7 @@ class IndexView(ListView):
     def get_context_data(self, **kwargs):
         ctx = super(IndexView, self).get_context_data(**kwargs)
         user = self.request.user
-        if user:
+        if user.is_authenticated():
             ctx['user'] = user
             ctx['profile'] = user.profile
         return ctx
@@ -29,7 +29,7 @@ class SkillDetailView(DetailView):
         user = self.request.user
         skill = ctx['skill']
         ctx['skill_profiles'] = skill.profile_set.all()
-        if user:
+        if user.is_authenticated():
             ctx['user'] = user
             ctx['profile'] = user.profile
         return ctx
