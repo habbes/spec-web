@@ -12,6 +12,16 @@ class Skill(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     skills = models.ManyToManyField(Skill)
+    email = models.CharField(max_length=255, null=True)
+    bio = models.TextField(default='', null=True)
+    blog = models.CharField(max_length=255, null=True)
+    company = models.CharField(max_length=255, null=True)
+    location = models.CharField(max_length=255, null=True)
+    avatar_url = models.CharField(max_length=255, null=True)
+    github_url = models.CharField(max_length=255, null=True)
+    github_followers = models.IntegerField(null=True,)
+    github_following = models.IntegerField(null=True)
+
 
 
 class Project(models.Model):
