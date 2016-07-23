@@ -33,6 +33,8 @@ def fetch_jobs(queue, callback):
 def get_handler(name):
     if name == 'projectSkills':
         return handlers.project_skills
+    if name == 'initUserProfile':
+        return handlers.init_user_profile
 
 
 def callback(channel, method, properties, body):

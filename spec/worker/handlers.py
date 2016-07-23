@@ -4,6 +4,7 @@ Worker handlers for incoming jobs
 from django.contrib.auth.models import User
 from social.apps.django_app.default.models import UserSocialAuth
 from django.db.models import ObjectDoesNotExist
+from github import Github
 from main.models import Skill, Profile
 
 
@@ -68,3 +69,41 @@ def project_skills(data):
             description=project['description'],
             homepage=project['homepage']
         )
+
+
+def init_user_profile(data):
+    uid, provider = \
+        data['userId'], data['provider']
+    user = User.objects.get(id=uid)
+    if provider == 'github':
+        init_user_github_profile(user)
+
+
+def init_user_github_profile(user):
+    provider = 'github'
+    social = UserSocialAuth.objects.get(provider=provider, user_id = user.id)
+    profile = user.profile
+    token = social.extra_data['access_token']
+    github = Github(login_or_token=token)
+    repos = github.get_repos()
+    for repo in repos:
+        project = profile.project_set.create()
+        project.provider = provider
+        project.external_id = repo.id
+        project.name = repo.name
+        project.homepage = repo.homepage
+        project.description = repo.description
+        project.private = repo.private
+        project.github_url = repo.html_url
+        project.github_full_name = repo.full_name
+        project.github_fork = repo.fork
+        project.github_forks = repo.forks_count
+        project.github_stars = repo.stargazers_count
+        project.github_language = repo.language
+        project.save()
+        languages = repo.get_languages().keys()
+        for lang in languages:
+            sk = get_object_or_null(Skill.objects, name=lang)
+            profile.skills.add(sk)
+            project.skills.add(sk)
+
