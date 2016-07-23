@@ -50,5 +50,5 @@ def callback(channel, method, properties, body):
 
 if __name__ == '__main__':
     print('Worker started...')
-    fetch_jobs(QUEUE, callback)
     print('Fetching jobs...')
+    fetch_jobs(QUEUE, callback)

@@ -72,6 +72,7 @@ def project_skills(data):
 
 
 def init_user_profile(data):
+    print('handling job init_user_profiles')
     uid, provider = \
         data['userId'], data['provider']
     user = User.objects.get(id=uid)
@@ -80,13 +81,16 @@ def init_user_profile(data):
 
 
 def init_user_github_profile(user):
+    print('init user github profile')
     provider = 'github'
     social = UserSocialAuth.objects.get(provider=provider, user_id = user.id)
     profile = user.profile
     token = social.extra_data['access_token']
     github = Github(login_or_token=token)
-    repos = github.get_repos()
+    github_user = github.get_user()
+    repos = github_user.get_repos()
     for repo in repos:
+        print('repo', repo.name)
         project = profile.project_set.create()
         project.provider = provider
         project.external_id = repo.id
@@ -103,7 +107,11 @@ def init_user_github_profile(user):
         project.save()
         languages = repo.get_languages().keys()
         for lang in languages:
+            print('skill', lang)
+            if not lang: continue
             sk = get_object_or_null(Skill.objects, name=lang)
+            if not sk:
+                sk = Skill.objects.create(name=lang)
             profile.skills.add(sk)
             project.skills.add(sk)
 
