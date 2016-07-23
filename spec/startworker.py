@@ -33,7 +33,8 @@ def fetch_jobs(queue, callback):
 def get_handler(name):
     if name == 'projectSkills':
         return handlers.project_skills
-
+    if name == 'initUserProfile':
+        return handlers.init_user_profile
 
 def callback(channel, method, properties, body):
     print('Incoming message received')
@@ -55,5 +56,5 @@ def callback(channel, method, properties, body):
 
 if __name__ == '__main__':
     print('Worker started...')
-    fetch_jobs(QUEUE, callback)
     print('Fetching jobs...')
+    fetch_jobs(QUEUE, callback)
