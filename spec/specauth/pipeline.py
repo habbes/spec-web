@@ -1,7 +1,7 @@
 """
 Functions to plug into the social auth pipeline
 """
-from jobqueue import hunter
+from jobqueue import appserver
 from main.models import Profile
 from github import Github
 
@@ -61,4 +61,5 @@ def queue_init_profile(backend, user, response, social, new_association, *args, 
     print('args', kwargs)
     if provider == 'github':
         init_github_profile(token, user.profile)
+    appserver.init_user_profile(user.id, provider)
     print('Done')
