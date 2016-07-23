@@ -24,8 +24,8 @@
             <a href="{{ project.homepage}}" target="_blank" title="Project Homepage">
                 <i class="fa fa-link"></i></a>
             {% endif %}
-            {% if project.url %}
-            <a href="{{ project.url }}" target="_blank" title="Project URL">
+            {% if project.github_url %}
+            <a href="{{ project.github_url }}" target="_blank" title="Project URL">
                 <i class="fa fa-{{ project.provider }}"></i></a>
             {% endif %}
         </div>
