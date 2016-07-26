@@ -7,30 +7,35 @@
 {% if projects|length > 0 %}
     <div class="project-list">
     {% for project in projects %}
-    <div class="project-list-item">
-        <h3>{{ project.name }}</h3>
-        {% if project.description %}
-        <p>{{ project.description }}</p>
-        {% else %}
-        <p><em>No description available.</em></p>
-        {% endif %}
-        <div class="project-skills">
-            {% if project.language %}
-            Language: {{ project.language }}
+    <div class="project-list-item panel panel-default">
+
+        <div class="panel-body">
+            <h3>{{ project.name }}</h3>
+            {% if project.description %}
+            <p>{{ project.description }}</p>
+            {% else %}
+            <p><em>No description available.</em></p>
             {% endif %}
-        </div>
-        <div class="project-links">
-            {% if project.homepage %}
-            <a href="{{ project.homepage}}" target="_blank" title="Project Homepage">
-                <i class="fa fa-link"></i></a>
-            {% endif %}
-            {% if project.github_url %}
-            <a href="{{ project.github_url }}" target="_blank" title="Project URL">
-                <i class="fa fa-{{ project.provider }}"></i></a>
-            {% endif %}
+            <hr>
+            <div class="project-skills">
+                {% for skill in project.skills.all %}
+                <span class="badge">{{ skill.name }}</span>
+                {% endfor %}
+            </div>
+            <hr>
+            <div class="project-links">
+                {% if project.homepage %}
+                <a class="btn btn-default btn-sm" href="{{ project.homepage}}" target="_blank" title="Project Homepage">
+                    <i class="fa fa-link"></i> Project Homepage</a>
+                {% endif %}
+                {% if project.github_url %}
+                <a class="btn btn-default btn-sm" href="{{ project.github_url }}" target="_blank" title="Project URL">
+                    <i class="fa fa-{{ project.provider }}"></i> Github Repo</a>
+                {% endif %}
+            </div>
         </div>
     </div>
-    <hr>
+
     {% endfor %}
     </div>
 

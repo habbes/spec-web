@@ -63,7 +63,6 @@ a.btn {
 
 .project-list .project-links a {
     display: inline-block;
-    font-size: 1.3em;
     margin-right:2px;
 }
 
@@ -74,4 +73,8 @@ a.btn {
 
 .padding-top {
     padding-top: 25px;
+}
+
+footer {
+    padding-bottom: 25px;
 }
