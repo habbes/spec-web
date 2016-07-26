@@ -6,6 +6,8 @@ from social.apps.django_app.default.models import UserSocialAuth
 from django.db.models import ObjectDoesNotExist
 from github import Github
 from main.models import Skill, Profile, ProfileSkill
+from . import ranking
+from jobqueue import appserver
 
 
 def get_object_or_null(klass, *args, **kwargs):
@@ -78,6 +80,8 @@ def init_user_profile(data):
     user = User.objects.get(id=uid)
     if provider == 'github':
         init_user_github_profile(user)
+    # queue job to rank profiles
+    appserver.rank_profiles()
 
 
 def init_user_github_profile(user):
@@ -121,3 +125,6 @@ def init_user_github_profile(user):
                 ProfileSkill.objects.create(profile=profile, skill=sk)
             project.skills.add(sk)
 
+
+def rank_profiles(data):
+    ranking.rank_profiles()
