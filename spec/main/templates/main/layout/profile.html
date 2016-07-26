@@ -2,57 +2,54 @@
 
 {% block content %}
 
-<div class="container">
+<div class="container padding-top">
     <div class="row">
-        <div class="panel panel-default">
-            <div class="panel-body">
 
-                <div class="col-md-4">
-                    <div class="profile-pic">
-                        <img class="img-responsive" src="{{ profile.avatar_url }}">
-                    </div>
-                    <h2>{{ user.first_name }} {{ user.last_name }}</h2>
 
-                    <div class="list-group">
-                        <div class="list-group-item">
-                            <a href="mailto:{{ user.email }}">
-                                <i class="fa fa-envelope-o"></i> {{ user.email }}
-                            </a>
-                        </div>
-                        {% if profile.blog %}
-                        <div class="list-group-item">
-                            <a href="{{ profile.blog }}" target="_blank">
-                                <i class="fa fa-globe"></i> {{ profile.blog }}
-                            </a>
-                        </div>
-                        {% endif %}
-                        {% if profile.github_url %}
-                        <div class="list-group-item">
-                            <a href="{{ profile.github_url }}" target="_blank">
-                                <i class="fa fa-github"></i> GitHub Profile
-                            </a>
-                        </div>
-                        {% endif %}
-                    </div>
+        <div class="col-md-3">
+            <div class="profile-pic">
+                <img class="img-responsive" src="{{ profile.avatar_url }}">
+            </div>
+            <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+
+            <div class="list-group">
+                <div class="list-group-item">
+                    <a href="mailto:{{ user.email }}">
+                        <i class="fa fa-envelope-o"></i> {{ user.email }}
+                    </a>
                 </div>
-                <div class="col-md-8 profile-main-content">
-                    <div class="nav nav-tabs">
-                        <!--<li class="{% block overview_tab_active %}{% endblock %}">-->
-                            <!--<a href="{% url 'profile:home' user.username %}">Overview</a></li>-->
-                        <li class="{% block projects_tab_active %}{% endblock %}">
-                            <a href="{% url 'profile:projects' user.username %}">Projects</a></li>
-                        <li class="{% block skills_tab_active %}{% endblock %}">
-                            <a href="{% url 'profile:skills' user.username %}">Skills</a></li>
-                    </div>
-                    <div class="profile-sub-content">
-                        {% block profile_content %}{% endblock %}
-                    </div>
+                {% if profile.blog %}
+                <div class="list-group-item">
+                    <a href="{{ profile.blog }}" target="_blank">
+                        <i class="fa fa-globe"></i> {{ profile.blog }}
+                    </a>
                 </div>
-
-
-
+                {% endif %}
+                {% if profile.github_url %}
+                <div class="list-group-item">
+                    <a href="{{ profile.github_url }}" target="_blank">
+                        <i class="fa fa-github"></i> GitHub Profile
+                    </a>
+                </div>
+                {% endif %}
             </div>
         </div>
+        <div class="col-md-9 profile-main-content">
+            <div class="nav nav-tabs">
+                <!--<li class="{% block overview_tab_active %}{% endblock %}">-->
+                    <!--<a href="{% url 'profile:home' user.username %}">Overview</a></li>-->
+                <li class="{% block projects_tab_active %}{% endblock %}">
+                    <a href="{% url 'profile:projects' user.username %}">Projects</a></li>
+                <li class="{% block skills_tab_active %}{% endblock %}">
+                    <a href="{% url 'profile:skills' user.username %}">Skills</a></li>
+            </div>
+            <div class="profile-sub-content">
+                {% block profile_content %}{% endblock %}
+            </div>
+        </div>
+
+
+
     </div>
 </div>
 
