@@ -4,8 +4,25 @@
 
 {% block profile_content %}
 
-<p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aliquid architecto debitis dolore explicabo fuga iure iusto laboriosam magnam minus mollitia nam numquam officia, perspiciatis qui quibusdam reprehenderit voluptate voluptatibus.
-</p>
+<h3>Bio</h3>
+{% if profile.bio %}
+<p>{{ profile.bio }}</p>
+{% else %}
+<p><i>No bio available.</i></p>
+{% endif %}
+
+<h3>Skills</h3>
+
+<div class="row">
+    {% for skill in profile.skills.all %}
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h4><a href="{% url 'skills:detail' skill.id %}">{{ skill.name }}</a></h4>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 
 {% endblock %}
