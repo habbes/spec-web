@@ -35,6 +35,8 @@ def get_handler(name):
         return handlers.project_skills
     if name == 'initUserProfile':
         return handlers.init_user_profile
+    if name == 'rankProfiles':
+        return handlers.rank_profiles
 
 def callback(channel, method, properties, body):
     print('Incoming message received')
