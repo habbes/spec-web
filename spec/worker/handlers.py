@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from social.apps.django_app.default.models import UserSocialAuth
 from django.db.models import ObjectDoesNotExist
 from github import Github
-from main.models import Skill, Profile
+from main.models import Skill, Profile, ProfileSkill
 
 
 def get_object_or_null(klass, *args, **kwargs):
@@ -112,6 +112,12 @@ def init_user_github_profile(user):
             sk = get_object_or_null(Skill.objects, name=lang)
             if not sk:
                 sk = Skill.objects.create(name=lang)
-            profile.skills.add(sk)
+
+            # create profile_skill if it doesn't exist
+            # TODO: Use transaction or db constraints instead of lookup+update
+            try:
+                ProfileSkill.objects.get(profile=profile, skill=sk)
+            except ObjectDoesNotExist as e:
+                ProfileSkill.objects.create(profile=profile, skill=sk)
             project.skills.add(sk)
 
