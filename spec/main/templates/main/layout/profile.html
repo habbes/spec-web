@@ -41,11 +41,11 @@
         <div class="col-md-9 profile-main-content">
             <div class="nav nav-tabs">
                 <li class="{% block overview_tab_active %}{% endblock %}">
-                    <a href="{% url 'profile:home' user.username %}">Overview</a></li>
+                    <a href="{% url 'profile:home' user.username %}">Profile</a></li>
                 <li class="{% block projects_tab_active %}{% endblock %}">
                     <a href="{% url 'profile:projects' user.username %}">Projects</a></li>
-                <li class="{% block skills_tab_active %}{% endblock %}">
-                    <a href="{% url 'profile:skills' user.username %}">Skills</a></li>
+                <!--<li class="{% block skills_tab_active %}{% endblock %}">-->
+                    <!--<a href="{% url 'profile:skills' user.username %}">Skills</a></li>-->
             </div>
             <div class="profile-sub-content">
                 {% block profile_content %}{% endblock %}
