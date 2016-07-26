@@ -19,7 +19,9 @@
             <hr>
             <div class="project-skills">
                 {% for skill in project.skills.all %}
-                <span class="badge">{{ skill.name }}</span>
+                <a href="{% url 'skills:detail' skill.id %}">
+                    <span class="badge">{{ skill.name }}</span>
+                </a>
                 {% endfor %}
             </div>
             <hr>
