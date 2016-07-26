@@ -21,6 +21,12 @@ class ProfileRanker:
 
     def compute_score(self):
         print('Compute score of user', self.user)
+        # init scores to 0
+        self.score = 0
+        for ps in self.profile.profileskill_set.all():
+            ps.skill_score = 0
+            ps.save()
+
         for repo in self.repos:
             pscore = self.project_score(repo)
             self.score += pscore
@@ -50,6 +56,10 @@ class ProfileRanker:
             ps = ProfileSkill.objects.get(skill=skill, profile=self.profile)
             skill_score = repo_score * (contrib/lang_contrib_total)
             ps.skill_score += skill_score
+            # update skill score upper bound
+            if ps.skill_score > skill.max_score:
+                skill.max_score = ps.skill_score
+                skill.save()
             ps.save()
 
     def compute_project_weight(self, repo):
