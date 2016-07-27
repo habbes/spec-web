@@ -73,7 +73,7 @@ a.btn {
 
 #home-backimage {
     height:250px;
-    background: black;
+    background: linear-gradient(to bottom right, #1e1d1b, #052627);
 }
 
 .profile-item-image {
@@ -81,10 +81,19 @@ a.btn {
     border-radius:50%;
 }
 
+
+
 .padding-top {
     padding-top: 25px;
 }
 
 footer {
     padding-bottom: 25px;
+}
+
+#home-subtitle {
+    padding-top:60px;
+    font-weight:normal;
+    color: #23e0b3;
+    font-size:50px;
 }
