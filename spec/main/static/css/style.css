@@ -76,6 +76,11 @@ a.btn {
     background: black;
 }
 
+.profile-item-image {
+    width:50px;
+    border-radius:50%;
+}
+
 .padding-top {
     padding-top: 25px;
 }

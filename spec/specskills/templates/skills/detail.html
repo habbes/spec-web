@@ -8,17 +8,9 @@
                 <h2>People with Skill: {{ skill.name }}</h2>
                 {% if skill_profiles|length > 0 %}
                 <div class="profile-list">
-                    {% for p in skill_profiles %}
+                    {% for profile in skill_profiles %}
 
-                    <div class="profile-list-item panel panel-default">
-                        <div class="panel-body">
-                            <h4>
-                                <a href="{% url 'profile:home' p.user.username %}">
-                                    {{ p.user.username }}
-                                </a>
-                            </h4>
-                        </div>
-                    </div>
+                    {% include 'main/partials/profile_item.html' %}
                     {% endfor %}
                 </div>
                 {% else %}
