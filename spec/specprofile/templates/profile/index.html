@@ -1,4 +1,5 @@
 {% extends 'main/layout/profile.html' %}
+{% load spec_extras %}
 
 {% block overview_tab_active %}active{% endblock %}
 
@@ -19,6 +20,7 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <h4><a href="{% url 'skills:detail' skill.id %}">{{ skill.name }}</a></h4>
+                <b>Skill Rating</b> <span class="badge">{{ skill | profileskillscore:profile }}</span>
             </div>
         </div>
     </div>
