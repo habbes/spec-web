@@ -1,4 +1,5 @@
 {% extends 'main/layout/base.html' %}
+{% load spec_extras %}
 
 {% block content %}
 
@@ -35,7 +36,7 @@
             </div>
             <hr>
             <div class="h3">
-                Score: <div class="badge">{{ profile.normalized_score }}</div>
+                Overall Score: <div class="badge">{{ profile.normalized_score |  percentage}}</div>
             </div>
         </div>
         <div class="col-md-9 profile-main-content">
