@@ -8,6 +8,7 @@ class Skill(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(default='', null=True)
     max_score = models.FloatField(default=0)
+    average_score = models.FloatField(default=0)
 
 
 class Profile(models.Model):
@@ -23,6 +24,7 @@ class Profile(models.Model):
     github_followers = models.IntegerField(null=True,)
     github_following = models.IntegerField(null=True)
     overall_score = models.FloatField(default=0)
+    normalized_score = models.FloatField(default=0)
 
 
 class Project(models.Model):
@@ -49,8 +51,10 @@ class ProfileSkill(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     skill = models.ForeignKey(Skill, on_delete=models.CASCADE)
     skill_score = models.FloatField(default=0)
+    normalized_skill_score = models.FloatField(default=0)
 
 
 class RankingResults(models.Model):
     max_score = models.FloatField(default=0)
+    average_score = models.FloatField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)

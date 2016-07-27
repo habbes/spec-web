@@ -69,10 +69,37 @@ class ProfileRanker:
 def rank_profiles():
     users = User.objects.all()
     max_score = 0
+    sum_score = 0
     for user in users:
         ranker = ProfileRanker(user)
         ranker.compute_score()
         if ranker.score > max_score:
             max_score = ranker.score
-    results = RankingResults.objects.create(max_score=max_score)
+        sum_score += ranker.score
+    average = sum_score / len(users)
+    results = RankingResults.objects.create(max_score=max_score, average_score=average)
+    print('Normalize profile scores scores')
+    for profile in Profile.objects.all():
+        score = profile.overall_score / max_score
+        #dampen score to avoid perfect scores
+        score = score * 0.89
+        profile.normalized_score = score
+        profile.save()
+
+    print('Normalie skill scores')
+    skills = Skill.objects.all()
+    for skill in skills:
+        max_score = skill.max_score
+        sum_score = 0
+        pskills = skill.profileskill_set.all()
+        if max_score > 0:
+            for ps in pskills:
+                sum_score += ps.skill_score
+                score = ps.skill_score/max_score
+                score = score * 0.89
+                ps.normalized_skill_score = score
+                ps.save()
+        average = sum_score / len(pskills)
+        skill.average_score = average
+        skill.save()
     return results
