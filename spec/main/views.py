@@ -10,5 +10,5 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         ctx = super(HomeView, self).get_context_data(**kwargs)
-        ctx['featured_profiles'] = Profile.objects.all()[:3]
+        ctx['featured_profiles'] = Profile.objects.all()[:10]
         return ctx
