@@ -17,6 +17,9 @@
         {% endif %}
         <div class="col-md-6 col-md-offset-3">
             <h2 class="text-center">Featured Profiles</h2>
+            {% for profile in featured_profiles %}
+            {% include 'main/partials/profile_item.html' %}
+            {% endfor %}
         </div>
     </div>
 </div>
