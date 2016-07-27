@@ -2,13 +2,13 @@
     <div class="panel-body">
         <div class="media">
             <div class="media-left">
-                <a href="{% url 'profile:home' profile.id %}">
+                <a href="{% url 'profile:home' profile.user.username %}">
                     <img src="{{ profile.avatar_url }}" alt="" class="media-object profile-item-image">
                 </a>
             </div>
             <div class="media-body">
                 <div class="media-heading">
-                    <a href="{% url 'profile:home' profile.id %}">
+                    <a href="{% url 'profile:home' profile.user.username %}">
                         {{ profile.user.first_name }} {{ profile.user.last_name }}
                     </a>
                 </div>
