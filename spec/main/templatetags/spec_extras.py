@@ -6,7 +6,7 @@ register = template.Library()
 
 @register.filter
 def percentage(value):
-    return '%.2f' %  (value * 100)
+    return '%.0f' %  (value * 100)
 
 
 @register.filter
