@@ -52,8 +52,11 @@ class ProfileRanker:
             try:
                 skill = Skill.objects.get(name=lang)
             except ObjectDoesNotExist as e:
-                continue
-            ps = ProfileSkill.objects.get(skill=skill, profile=self.profile)
+                skill = Skill.objects.create(name=lang)
+            try:
+                ps = ProfileSkill.objects.get(skill=skill, profile=self.profile)
+            except ObjectDoesNotExist as e:
+                ps = ProfileSkill.objects.create(skill=skill, profile=self.profile)
             skill_score = repo_score * (contrib/lang_contrib_total)
             ps.skill_score += skill_score
             # update skill score upper bound
