@@ -1,7 +1,7 @@
 defusedxml==0.4.1
 Django==1.9.7
 django-dotenv==1.4.1
-httplib2==0.9.2
+httplib2==0.18.0
 oauth2==1.9.0.post1
 oauthlib==1.1.2
 pika==0.10.0
